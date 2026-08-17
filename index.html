@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | ปิยนันท์ โพสาวัง</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Tahoma, sans-serif;
+            background: linear-gradient(135deg, #fff5fa, #f7f0ff);
+            color: #403640;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            border-bottom: 1px solid #f2d6e5;
+            box-shadow: 0 3px 15px rgba(180,100,150,0.08);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: auto;
+            padding: 14px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #c74382;
+            font-size: 26px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #654e5c;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #d64f91;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 650px;
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.1;
+            color: #b93676;
+            margin-bottom: 10px;
+        }
+
+        .nickname {
+            font-size: 30px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .nickname span {
+            color: #e05a96;
+            font-weight: bold;
+        }
+
+        .quote {
+            border-left: 5px solid #ee8db6;
+            padding-left: 20px;
+            font-size: 20px;
+            color: #6b5662;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #ed77a8, #d64d8e);
+            color: white;
+        }
+
+        .btn-outline {
+            border: 2px solid #e66d9f;
+            color: #d24c87;
+            background: white;
+        }
+
+        /* รูปโปรไฟล์ */
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .photo-frame {
+            width: min(100%, 430px);
+            height: 520px;
+            padding: 8px;
+            border: 2px solid #f19ac0;
+            border-radius: 35px;
+            background: white;
+            box-shadow: 0 15px 40px rgba(180,80,130,0.15);
+            transform: rotate(2deg);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 28px;
+        }
+
+        /* SECTION */
+        .section {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 45px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #ead7ef;
+            border-radius: 28px;
+            box-shadow: 0 8px 30px rgba(120,70,120,0.07);
+        }
+
+        .section-title {
+            color: #c64283;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 30px;
+        }
+
+        .about-text {
+            font-size: 17px;
+        }
+
+        .info-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-item {
+            padding: 14px 18px;
+            border-radius: 15px;
+            background: #fff4f9;
+            border: 1px solid #f5d9e7;
+        }
+
+        .info-item strong {
+            color: #bd477d;
+        }
+
+        /* EDUCATION */
+        .education-card {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 25px;
+            border-radius: 20px;
+            background: linear-gradient(135deg,#fff7fb,#f7f2ff);
+            border: 1px solid #eadcf1;
+        }
+
+        .school-icon {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: #fce1ed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            flex-shrink: 0;
+        }
+
+        .education-card h3 {
+            color: #6d4c5d;
+            font-size: 23px;
+        }
+
+        /* SKILL */
+        .skill-card {
+            padding: 30px;
+            text-align: center;
+            border-radius: 22px;
+            background: linear-gradient(135deg,#fff1f7,#f7efff);
+            border: 1px solid #efcfe0;
+        }
+
+        .skill-icon {
+            font-size: 55px;
+        }
+
+        .skill-card h3 {
+            color: #c14382;
+            font-size: 25px;
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-card {
+            padding: 25px;
+            border-radius: 20px;
+            background: #fffaf2;
+            border: 1px solid #f1dfc7;
+        }
+
+        .contact-card h3 {
+            color: #c14382;
+        }
+
+        .contact-card a {
+            color: #5d5360;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 60px;
+            padding: 25px;
+            text-align: center;
+            color: #8b6075;
+            background: #f7d9e9;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            .nav-inner {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 45px 22px;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .photo-frame {
+                height: 430px;
+                max-width: 350px;
+            }
+
+            .quote {
+                text-align: left;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin: 25px 15px;
+                padding: 28px 22px;
+            }
+
+            .education-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-inner">
+
+            <div class="logo">
+                Portfolio ✦
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#about">เกี่ยวกับฉัน</a></li>
+                <li><a href="#education">การศึกษา</a></li>
+                <li><a href="#skill">ความสามารถ</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- HOME -->
+    <header class="hero" id="home">
+
+        <div class="hero-text">
+
+            <h1>
+                ปิยนันท์<br>
+                โพสาวัง
+            </h1>
+
+            <div class="nickname">
+                ชื่อเล่น <span>เฟย</span>
+            </div>
+
+            <div class="quote">
+                “มุ่งมั่น ตั้งใจ พัฒนาตัวเอง<br>
+                ในทุก ๆ วัน”
+            </div>
+
+            <div class="buttons">
+                <a href="#skill" class="btn btn-main">
+                    ดูความสามารถ
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    ติดต่อฉัน
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <div class="photo-frame">
+
+                <!-- รูปต้องชื่อ profile.jpg -->
+                <img
+                    src="profile.jpg"
+                    alt="รูปโปรไฟล์ของปิยนันท์ โพสาวัง"
+                >
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+
+        <h2 class="section-title">
+            เกี่ยวกับฉัน
+        </h2>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    สวัสดีค่ะ ฉันชื่อ
+                    <strong>ปิยนันท์ โพสาวัง</strong>
+                    ชื่อเล่น <strong>เฟย</strong>
+                </p>
+
+                <br>
+
+                <p>
+                    เป็นนักเรียนที่มีความสนใจด้านศิลปะและการวาดรูป
+                    ชอบสร้างสรรค์ผลงานและพัฒนาความสามารถของตัวเอง
+                    อยู่เสมอ
+                </p>
+
+                <br>
+
+                <p>
+                    ฉันเชื่อว่าการเรียนรู้สิ่งใหม่ ๆ และการฝึกฝนอย่าง
+                    สม่ำเสมอ จะช่วยให้เราพัฒนาตัวเองได้ในทุกวัน
+                </p>
+
+            </div>
+
+
+            <div class="info-list">
+
+                <div class="info-item">
+                    <strong>วันเกิด</strong><br>
+                    25 กุมภาพันธ์ 2552
+                </div>
+
+                <div class="info-item">
+                    <strong>อายุ</strong><br>
+                    17 ปี
+                </div>
+
+                <div class="info-item">
+                    <strong>ความสนใจ</strong><br>
+                    ศิลปะและการวาดรูป
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+
+        <h2 class="section-title">
+            การศึกษา
+        </h2>
+
+        <div class="education-card">
+
+            <div class="school-icon">
+                🎓
+            </div>
+
+            <div>
+
+                <h3>
+                    โรงเรียนเซนต์โยเซฟทิพวัล
+                </h3>
+
+                <p>
+                    กำลังศึกษาอยู่ในระดับมัธยมศึกษา
+                </p>
+
+                <p>
+                    ตั้งใจเรียนและพัฒนาความสามารถในด้านต่าง ๆ
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILL -->
+    <section class="section" id="skill">
+
+        <h2 class="section-title">
+            ความสามารถ
+        </h2>
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                🎨
+            </div>
+
+            <h3>
+                วาดรูป
+            </h3>
+
+            <p>
+                มีความสามารถและความสนใจด้านการวาดรูป
+                ชอบสร้างสรรค์ผลงานและทดลองวาดภาพ
+                ในหลากหลายสไตล์
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+
+        <h2 class="section-title">
+            ติดต่อฉัน
+        </h2>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+
+                <h3>
+                    โทรศัพท์
+                </h3>
+
+                <a href="tel:0928314643">
+                    092-831-4643
+                </a>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <h3>
+                    อีเมล
+                </h3>
+
+                <a href="mailto:feyhong123@gmail.com">
+                    feyhong123@gmail.com
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        © 2026 ปิยนันท์ โพสาวัง
+        | My Portfolio ♥
+
+    </footer>
+
+</body>
+</html>
